@@ -54,9 +54,9 @@ def fetch_and_store_plans():
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
 
-schedule.every(2).minutes.do(fetch_and_store_plans)
+schedule.every(10).minutes.do(fetch_and_store_plans)
 
-print("Scheduler started. Will run fetch_and_store_plans every minute.")
+print("Scheduler started. Will run fetch_and_store_plans every 10 minutes.")
 fetch_and_store_plans()
 while True:
     schedule.run_pending()
