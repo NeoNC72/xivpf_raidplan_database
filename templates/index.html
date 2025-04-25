@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>XIV Raid Plans</title>
+    <style>
+        body { font-family: sans-serif; margin: 2em; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        a { text-decoration: none; color: blue; }
+        a:hover { text-decoration: underline; }
+        ul { list-style-type: none; padding-left: 0; }
+        li { margin-bottom: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Available Raid Plans</h1>
+    {% if grouped_plans %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Duty Name</th>
+                    <th>Raid Plan URLs</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for duty_name, urls in grouped_plans.items() %}
+                <tr>
+                    <td>{{ duty_name }}</td>
+                    <td>
+                        <ul>
+                            {% for url in urls %}
+                            <li><a href="https://{{ url }}" target="_blank">{{ url }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No raid plans found in the database yet. The fetcher might be running.</p>
+    {% endif %}
+</body>
+</html>
